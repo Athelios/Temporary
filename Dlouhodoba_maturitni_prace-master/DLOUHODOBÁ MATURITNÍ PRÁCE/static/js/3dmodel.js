@@ -28,18 +28,18 @@ controls.update();
 >TEST ANIM
 >POPIS
 */
-function check() {
+/*function check() {
     if (document.getElementById("design_pc").checked) {
         buildPc();
     }
-    if (document.getElementById("basic_cleaning_pc").checked) {
+    else if (document.getElementById("basic_cleaning_pc").checked) {
         hardwareJob();
     } else {
         web();
     }
 }
 
-check();
+check();*/
 
 //#########################PRVNÍ ANIMACE#########################
 
@@ -81,7 +81,7 @@ function hardwareJob() {
         action.play();
     }
 
-    check();
+    //check();
 }
 //#########################DRUHÁ ANIMACE#########################
 
@@ -131,7 +131,7 @@ function buildPc() {
         actionTwo.play();
     }
 
-    check();
+    //check();
 }
 //#########################TŘETÍ ANIMACE#########################
 
@@ -171,5 +171,5 @@ function web() {
         actionThree.play();
     }
 
-    check();
+    //check();
 }
