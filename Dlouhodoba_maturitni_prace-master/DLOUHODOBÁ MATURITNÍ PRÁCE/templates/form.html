@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="stylesheet" href="/static/css/normalize.css" />
+    <link href="http://fonts.googleapis.com/css?family=Nunito:400,300" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/static/form/css/main.css" />
+</head>
+
+<body>
+    <canvas id="canvas"> </canvas>
+
+    <div class="main-container">
+        <form action="index.html" method="post">
+            <h1>Order</h1>
+
+            <fieldset>
+                <legend><span class="number">1</span> Basic Info</legend>
+
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="user_name" />
+
+                <label for="name">Second Name:</label>
+                <input type="text" id="last_name" name="user_last_name" />
+
+                <label for="isic">Telephone: (*with preset)</label>
+                <input type="number" id="isic" name="user_isic" />
+
+                <label for="mail">Input email:</label>
+                <input type="email" id="mail" name="user_email" />
+                <!--
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="user_password">
+
+                <label for="age">Age:</label>
+                <input type="radio" id="under_18" value="under_18" name="user_age"><label for="under_18
+                    " class="light">Under 18</label>
+                
+                <br>
+
+                <input type="radio" id="over_18" value="over_18" name="user_age"><label for="over_18
+                    " class="light">18 or older</label>
+                -->
+            </fieldset>
+
+            <fieldset>
+                <legend><span class="number">2</span> Type</legend>
+                <label for="opinion">Your Opinion</label>
+                <textarea id="opinion" name="user_opinion"></textarea>
+
+                <label for="classes">Type of service</label>
+                <select id="classes" name="user_classes" onchange="switchClass(this)">
+            <optgroup label="Build PC">
+              <option value="build" onclick="buildPc()">Build</option>
+            </optgroup>
+
+            <optgroup label="Hardware job">
+              <option value="pc" onclick="hardwareJob()"
+                >Cleaning PC (hardware)</option
+              >
+              <option value="laptop" onclick="hardwareJob()"
+                >Laptop (hardware)</option
+              >
+              <option value="tablet" onclick="hardwareJob()"
+                >Tablet (hardware)</option
+              >
+              <option value="mobile" onclick="hardwareJob()"
+                >Mobile (hardware)</option
+              >
+            </optgroup>
+
+            <optgroup label="WEB">
+              <option value="creating_web" onclick="web()">Creating WEB</option>
+              <option value="rebuild_web" onclick="web()">Rebuild WEB</option>
+              <option value="design_web" onclick="web()">Design WEB</option>
+              <option value="other_web" onclick="web()">Other</option>
+            </optgroup>
+          </select>
+
+                <label>Build PC</label>
+                <input type="radio" id="build_pc" value="options_build_pc" name="user_options" /><label class="light" for="build_pc" onclick="buildPc()">Build PC (by agreement)</label
+          ><br />
+          <input
+            type="radio"
+            id="design_pc"
+            value="options_design_pc"
+            name="user_options"
+          /><label class="light" for="design_pc" onclick="buildPc()"
+            >Design PC (by agreement)</label
+          ><br />
+          <label>Hardware job/Cleaning PC</label>
+                <input type="checkbox" id="diagnostics_pc" value="options_diagnostics_pc" name="user_options" /><label class="light" for="diagnostics_pc" onclick="hardwareJob()">Diagnostics of PC + Plan of solution (150 - 600,-)</label
+          ><br />
+          <input
+            type="radio"
+            id="basic_cleaning_pc"
+            value="options_basic_cleaning_pc"
+            name="user_options"
+          /><label class="light" for="basic_cleaning_pc" onclick="hardwareJob()"
+            >Basic PC cleaning (300 - 700,-)</label
+          ><br />
+          <input
+            type="radio"
+            id="complex_cleaning_pc"
+            value="options_complex_cleaning_pc"
+            name="user_options"
+          /><label
+            class="light"
+            for="complex_cleaning_pc"
+            onclick="hardwareJob()"
+            >Complex PC cleaning (450 - 900,-)</label
+          ><br />
+          <input
+            type="checkbox"
+            id="thermal_conductive_pc"
+            value="options_thermal_conductive_paste_pc"
+            name="user_options"
+          /><label
+            class="light"
+            for="thermal_conductive_paste_pc"
+            onclick="hardwareJob()"
+            >Paste replacement (200 - 500,-) </label
+          ><br />
+          <input
+            type="checkbox"
+            id="changing_components_pc"
+            value="options_changing_components_pc"
+            name="user_options"
+          /><label
+            class="light"
+            for="changing_components_pc"
+            onclick="hardwareJob()"
+            >PC component replacement/install (200 - 500,-) </label
+          ><br />
+          <input
+            type="checkbox"
+            id="motherboard_replacement_pc"
+            value="options_motherboard_replacement_pc"
+            name="user_options"
+          /><label
+            class="light"
+            for="motherboard_replacement_pc"
+            onclick="hardwareJob()"
+            >Motherboard replacement (400 - 800,-) </label
+          ><br />
+          <input
+            type="checkbox"
+            id="source_replacement_pc"
+            value="options_source_replacement_pc"
+            name="user_options"
+          /><label
+            class="light"
+            for="source_replacement_pc"
+            onclick="hardwareJob()"
+            >Source replacement (200 - 500,-) </label
+          ><br />
+          <input
+            type="checkbox"
+            id="extend_memory_pc"
+            value="options_extend_memory_pc"
+            name="user_options"
+          /><label class="light" for="extend_memory_pc" onclick="hardwareJob()"
+            >Extend PC memory (150 - 400,-) </label
+          ><br />
+          <input
+            type="checkbox"
+            id="assembly_pc"
+            value="options_assembly_pc"
+            name="user_options"
+          /><label class="light" for="assembly_pc" onclick="hardwareJob()"
+            >PC assembly (400 - 600,-) </label
+          ><br />
+          <label>Hardware job/Cleaning Laptop</label>
+                <input type="checkbox" id="diagnostics_laptop" value="options_diagnostics_laptop" name="user_options" /><label class="light" for="diagnostics_laptop" onclick="hardwareJob()">Diagnostics of laptop + Plan of solution (150 - 600,-)</label
+          ><br />
+          <input
+            type="radio"
+            id="basic_cleaning_laptop"
+            value="options_basic_cleaning_laptop"
+            name="user_options"
+          /><label
+            class="light"
+            for="basic_cleaning_laptop"
+            onclick="hardwareJob()"
+            >Basic laptop cleaning (300 - 700,-)</label
+          ><br />
+          <input
+            type="radio"
+            id="complex_cleaning_laptop"
+            value="options_complex_cleaning_laptop"
+            name="user_options"
+          /><label
+            class="light"
+            for="complex_cleaning_laptop"
+            onclick="hardwareJob()"
+            >Complex laptop cleaning (450 - 900,-)</label
+          ><br />
+          <input
+            type="checkbox"
+            id="thermal_conductive_laptop"
+            value="options_thermal_conductive_paste_laptop"
+            name="user_options"
+          /><label
+            class="light"
+            for="thermal_conductive_paste_laptop"
+            onclick="hardwareJob()"
+            >Paste replacement (200 - 500,-) </label
+          ><br />
+          <input
+            type="checkbox"
+            id="changing_components_laptop"
+            value="options_changing_components_laptop"
+            name="user_options"
+          /><label
+            class="light"
+            for="changing_components_laptop"
+            onclick="hardwareJob()"
+            >Laptop component replacement/install (200 - 500,-) </label
+          ><br />
+          <input
+            type="checkbox"
+            id="motherboard_replacement_laptop"
+            value="options_motherboard_replacement_laptop"
+            name="user_options"
+          /><label
+            class="light"
+            for="motherboard_replacement_laptop"
+            onclick="hardwareJob()"
+            >Motherboard replacement (400 - 800,-) </label
+          ><br />
+          <input
+            type="checkbox"
+            id="source_replacement_laptop"
+            value="options_source_replacement_laptop"
+            name="user_options"
+          /><label
+            class="light"
+            for="source_replacement_laptop"
+            onclick="hardwareJob()"
+            >Source replacement (200 - 500,-) </label
+          ><br />
+          <input
+            type="checkbox"
+            id="extend_memory_laptop"
+            value="options_extend_memory_laptop"
+            name="user_options"
+          /><label
+            class="light"
+            for="extend_memory_laptop"
+            onclick="hardwareJob()"
+            >Extend laptop memory (150 - 400,-) </label
+          ><br />
+          <input
+            type="checkbox"
+            id="recommended_laptop"
+            value="options_recommended_laptop"
+            name="user_options"
+          /><label
+            class="light"
+            for="recommended_laptop"
+            onclick="hardwareJob()"
+            >Recommend a laptop (500 - 700,-) </label
+          ><br />
+          <label>Hardware job/Cleaning Tablet</label>
+                <input type="checkbox" id="diagnostics_tablet" value="options_diagnostics_tablet" name="user_options" /><label class="light" for="diagnostics_tablet" onclick="hardwareJob()">Diagnostics of tablet + Plan of solution (150 - 600,-)</label
+          ><br />
+          <input
+            type="radio"
+            id="basic_cleaning_tablet"
+            value="options_basic_cleaning_tablet"
+            name="user_options"
+          /><label
+            class="light"
+            for="basic_cleaning_laptop"
+            onclick="hardwareJob()"
+            >Basic tablet cleaning(150 - 300,-)</label
+          ><br />
+          <input
+            type="radio"
+            id="complex_cleaning_tablet"
+            value="options_complex_cleaning_tablet"
+            name="user_options"
+          /><label
+            class="light"
+            for="complex_cleaning_tablet"
+            onclick="hardwareJob()"
+            >Complex tablet cleaning (350 - 500,-)</label
+          ><br />
+          <input
+            type="checkbox"
+            id="glass_replacement_tablet"
+            value="options_glass_replacement_tablet"
+            name="user_options"
+          /><label
+            class="light"
+            for="glass_replacement_tablet"
+            onclick="hardwareJob()"
+            >Glass replacement (350 - 500,-)</label
+          ><br />
+          <label>Hardware job/Cleaning Mobile</label>
+                <input type="checkbox" id="diagnostics_mobile" value="options_diagnostics_mobile" name="user_options" /><label class="light" for="diagnostics_mobile" onclick="hardwareJob()">Diagnostics of mobile + Plan of solution (150 - 600,-)</label
+          ><br />
+          <input
+            type="radio"
+            id="basic_cleaning_mobile"
+            value="options_basic_cleaning_mobile"
+            name="user_options"
+          /><label
+            class="light"
+            for="basic_cleaning_mobile"
+            onclick="hardwareJob()"
+            >Basic mobile cleaning (150 - 300,-)</label
+          ><br />
+          <input
+            type="radio"
+            id="complex_cleaning_mobile"
+            value="options_complex_cleaning_mobile"
+            name="user_options"
+          /><label
+            class="light"
+            for="complex_cleaning_mobile"
+            onclick="hardwareJob()"
+            >Complex mobile cleaning (350 - 500,-)</label
+          ><br />
+          <input
+            type="checkbox"
+            id="glass_replacement_mobile"
+            value="options_glass_replacement_obile"
+            name="user_options"
+          /><label
+            class="light"
+            for="glass_replacement_mobile"
+            onclick="hardwareJob()"
+            >Glass replacement (350 - 500,-)</label
+          ><br />
+          <label>Design web</label>
+                <input type="radio" id="scheduling_web" value="options_scheduling_web" name="user_options" /><label class="light" for="scheduling_web" onclick="web()">Scheduling (300 - 600)</label
+          ><br />
+          <input
+            type="radio"
+            id="design_web"
+            value="options_design_web"
+            name="user_options"
+          /><label class="light" for="design_web" onclick="web()"
+            >Design WEB with Affinity designer (500 - 900,-)</label
+          ><br />
+          <input
+            type="radio"
+            id="fix_web"
+            value="options_fix_web"
+            name="user_options"
+          /><label class="light" for="fix_web" onclick="web()"
+            >Fix WEB page (By agreement)</label
+          ><br />
+        </fieldset>
+
+        <button type="submit">Send</button>
+      </form>
+    </div>
+
+    <script src="/static/js/3rd_party/three.min.js"></script>
+    <script src="/static/js/3rd_party/inflate.min.js"></script>
+    <script src="/static/js/3rd_party/FBXLoader.js"></script>
+    <script src="/static/js/3rd_party/OrbitControls.js"></script>
+    <script src="/static/js/form.js"></script>
+    <script src="/static/js/3dmodel.js"></script>
+  </body>
+</html>
